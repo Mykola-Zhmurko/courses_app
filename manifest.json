@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "NodeJS_courses_App",
+  "description": "Courses_App, Simple_App_NodeJS, NodeJS, Beginner, MongoDB",
+  "version": "1.0",
+  "icons": {
+    "256": "https://cdn-icons-png.freepik.com/256/15384/15384184.png?semt=ais_hybrid"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs",
+    "sessions"
+  ],
+  "action": {
+    "default_popup": "/Users/mykolazhmurko/Desktop/Apps/CoursesApp/public/login.hbs"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["/Users/mykolazhmurko/Desktop/Apps/CoursesApp/public/app.js"]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+<section class="section">
+  <div class="container">
+    <h1 class="title has-text-centered">Courses</h1>
+
+    {{#if courses.length}}
+      <div class="is-flex is-flex-direction-column is-align-items-center">
+        {{#each courses}}
+          <div class="card mb-5" style="max-width: 500px; width: 100%;"> 
+            <div class="card-image">
+              <figure class="image is-16by9">
+                <img src="{{img}}" alt="{{title}}">
+              </figure>
+            </div>
+
+            <div class="card-content">
+              <p class="title is-5">{{title}}</p>
+              <p class="subtitle is-6 has-text-weight-bold">€{{price}}</p>
+            </div>
+
+            <footer class="card-footer">
+              <a href="/courses/{{id}}" target="_blank" class="card-footer-item">Open the course</a>
+
+              {{#if @root.isAuth}}
+
+                {{#ifeq userId._id @root.userId}}
+                <a href="/courses/{{id}}/edit?allow=true" class="card-footer-item">Edit</a>
+                {{/ifeq}}
+
+                <form action="/card/add" method="POST" class="card-footer-item">
+                  <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+                  <input type="hidden" name="id" value="{{id}}">
+                  <button type="submit" class="button is-primary">Buy</button>
+                </form>
+              {{/if}}
+            </footer>
+          </div>
+        {{/each}}
+      </div>
+    {{else}}
+      <p class="has-text-centered">There are no courses here yet</p>
+    {{/if}}
+  </div>
+</section>

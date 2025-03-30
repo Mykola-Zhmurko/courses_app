@@ -1,0 +1,81 @@
+<div class="auth">
+    <div class="columns">
+        <div class="column is-12">
+            <div class="tabs is-centered">
+                <ul>
+                    <li class="is-active"><a href="#login" data-target="#login">Log in</a></li>
+                    <li><a href="#register">Register</a></li>
+                </ul>
+            </div>
+
+
+            <div id="login" class="tab-content">
+                {{#if loginError}}
+                    <p class="alert">{{loginError}}</p>
+                {{/if}}
+                <h2>Enter the store</h2>
+                <form action="/auth/login" method="POST" >
+                    <div class="field">
+                        <label class="label" for="email">Email</label>
+                        <div class="control">
+                            <input id="email" name="email" type="email" class="input" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="password">Password</label>
+                        <div class="control">
+                            <input id="password" name="password" type="password" class="input" required>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="_csrf" value="{{csrf}}">
+                    <button class="button is-primary" type="submit">Log in</button>
+                </form>
+            </div>
+
+
+
+
+
+            <div id="register" class="tab-content is-hidden">
+                {{#if registerError}}
+                    <p class="alert">{{registerError}}</p>
+                {{/if}}
+                <h2>Registration</h2>
+                <form action="/auth/register" method="POST">
+                    <div class="field">
+                        <label class="label" for="remail">Email</label>
+                        <div class="control">
+                            <input id="remail" name="email" type="email" class="input" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="rpassword">Password</label>
+                        <div class="control">
+                            <input id="rpassword" name="password" type="password" class="input" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="confirm">Confirm Password</label>
+                        <div class="control">
+                            <input id="confirm" name="confirm" type="password" class="input" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="name">Enter your name</label>
+                        <div class="control">
+                            <input id="name" name="name" type="text" class="input">
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="_csrf" value="{{csrf}}">
+                    <button class="button is-primary" type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

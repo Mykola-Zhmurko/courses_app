@@ -1,0 +1,38 @@
+<h1 class="title">Edit {{course.title}}</h1>
+
+<form action="/courses/edit" method="post" class="course-form">
+    <div class="field">
+        <label class="label" for="title">Course name</label>
+        <div class="control">
+            <input id="title" name="title" type="text" class="input" required value="{{course.title}}">
+        </div>
+        <p class="help is-danger">Enter the name</p>
+    </div>
+
+    <div class="field">
+        <label class="label" for="price">Course price</label>
+        <div class="control">
+            <input id="price" name="price" type="number" class="input" required min="1" value="{{course.price}}">
+        </div>
+        <p class="help is-danger">Enter the price</p>
+    </div>
+
+    <div class="field">
+        <label class="label" for="img">Img URL. If you don't want, write "."</label>
+        <div class="control">
+            <input id="img" name="img" type="text" class="input" required value="{{course.img}}">
+        </div>
+        <p class="help is-danger">Enter the URL of Img</p>
+    </div>
+
+    <input type="hidden" name="id" value="{{course.id}}">
+    <input type="hidden" name="_csrf" value="{{csrf}}">
+
+    <button type="submit" class="button is-primary">Edit the course</button>
+</form>
+
+<form action="/courses/remove" method="POST">
+    <input type="hidden" name="id" value="{{ course.id }}">
+    <input type="hidden" name="_csrf" value="{{csrf}}">
+    <button class="button is-danger">Delete the course</button>
+</form>

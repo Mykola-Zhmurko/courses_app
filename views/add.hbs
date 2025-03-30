@@ -1,0 +1,35 @@
+<h1 class="title">Add a New Course</h1>
+
+{{#if error}}
+    <p class="alert">{{error}}</p>
+{{/if}}
+
+<form action="/add" method="post">
+    <div class="field">
+        <label class="label" for="title">Course Name</label>
+        <div class="control">
+            <input id="title" name="title" type="text" class="input" required value="{{data.title}}">
+        </div>
+        <p class="help is-danger">Enter the name</p>
+    </div>
+
+    <div class="field">
+        <label class="label" for="price">Course Price</label>
+        <div class="control">
+            <input id="price" name="price" type="number" class="input" required min="1" value="{{data.price}}">
+        </div>
+        <p class="help is-danger">Enter the price</p>
+    </div>
+
+    <div class="field">
+        <label class="label" for="img">Image URL</label>
+        <div class="control">
+            <input id="img" name="img" type="text" class="input" required value="{{data.img}}">
+        </div>
+        <p class="help is-danger">Enter the image URL</p>
+    </div>
+
+    <input type="hidden" name="_csrf" value="{{csrf}}">
+
+    <button type="submit" class="button is-primary">Add the Course</button>
+</form>

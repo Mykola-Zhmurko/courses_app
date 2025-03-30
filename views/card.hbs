@@ -1,0 +1,40 @@
+<h1 class="title">Your Cart</h1>  
+<div id="card">
+{{#if courses.length}}
+    <table class="table is-fullwidth">
+        <thead>
+            <tr>
+                <th>Course Name:</th>
+                <th>Amount:</th>
+                <th>Price:</th>
+                <th>Actions:</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each courses}}
+            <tr>
+                <td>{{title}}</td>
+                <td>{{count}}</td>
+                <td>{{price}}</td>
+                <td>
+                    <button 
+                    class="button is-small is-danger js-remove" 
+                    data-id="{{id}}"
+                    data-csrf="{{@root.csrf}}"
+                    >Delete</button>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <p><strong>Total Price:</strong><span class="price">{{price}}</span></p>
+
+    <form action="/orders" method="POST">
+        <input type="hidden" name="_csrf" value="{{csrf}}">
+        <button type="submit" class="button is-primary">Order</button>
+    </form>
+{{else}}
+    <h5>Your cart is empty</h5>
+{{/if}}
+</div>
